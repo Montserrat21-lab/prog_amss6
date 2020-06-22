@@ -1,0 +1,125 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ejercicio3;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author sale7
+ */
+public class Principal {
+    public static void main(String[]args){
+        Scanner sc= new Scanner (System.in);
+        Ejercicio3 e1= new Ejercicio3();
+         double imc;
+         
+         System.out.println("Ingresa tu nombre");
+         e1.setNombre(sc.nextLine());
+         System.out.println("Ingrese tu edad");
+         e1.setEdad(sc.nextInt());
+         System.out.println("Ingresa tu peso en kg");
+         e1.setPeso(sc.nextDouble());
+         System.out.println("Ingresa tu altura en m ejemplo:1.56");
+         e1.setAltura(sc.nextDouble());
+         
+         imc = Operaciones.calcularpeso( e1.getPeso(),e1.getAltura());
+         Operaciones.resultado(e1.getNombre(),e1.getEdad(),e1.getPeso(),e1.getAltura(),imc);
+                 
+          
+    }
+}
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ejercicio3;
+
+/**
+ *
+ * @author sale7
+ */
+public class Operaciones {
+    public static  double calcularpeso(double peso, double altura){
+        double imc= peso/(Math.pow(altura,2));
+        return imc;
+    }
+    
+    public  static void resultado(String nombre,int edad,double peso,double altura,double imc){
+    if(imc<18.5){
+        System.out.println("hola"+ nombre+"tu edad es de: "+edad+"tienes un peso de: "+peso+"altura de: "+altura);
+        System.out.println("tu peso es bajo ya que tienes un IMC de"+imc);
+       }
+    else if(imc >= 18.5 && imc < 25){
+         System.out.println("hola"+ nombre+"tu edad es de: "+edad+"tienes un peso de: "+peso+"altura de: "+altura);
+        System.out.println("tu peso es normal  ya que tienes un IMC de"+imc);
+    } 
+    else if(imc >= 25 && imc  < 30){
+         System.out.println("hola"+ nombre+"tu edad es de: "+edad+"tienes un peso de: "+peso+"altura de: "+altura);
+        System.out.println("tu peso es  sobrepeso ya que tienes un IMC de"+imc);
+    }
+     else if(imc > 30 ){
+         System.out.println("hola"+ nombre+"tu edad es de: "+edad+"tienes un peso de: "+peso+"altura de: "+altura);
+        System.out.println("tu peso es  obesidad ya que tienes un IMC de"+imc);
+       }
+    }
+}
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ejercicio3;
+
+/**
+ *
+ * @author sale7
+ */
+public class Ejercicio3 {
+private String  nombre;
+private int edad;
+private double peso;
+private double altura;
+
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+   
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    
+    public int getEdad() {
+        return edad;
+    }
+
+    
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+   
+    public double getPeso() {
+        return peso;
+    }
+
+   
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }  
+}
